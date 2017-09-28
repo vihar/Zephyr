@@ -3,6 +3,7 @@ from django.utils import timezone
 
 from .models import Post
 from .forms import PostForm
+from django.core.exceptions import PermissionDenied
 
 
 # Create your views here.
@@ -16,7 +17,12 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'post_detail.html', {'post': post})
+    if request.user.pk == post.author.pk:
+        edit = True
+    else:
+        edit = False
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'post_detail.html', {'post': post, 'edit': edit})
 
 
 def post_new(request):
@@ -35,6 +41,10 @@ def post_new(request):
 
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    if request.user.pk == post.author.pk:
+        edit = True
+    else:
+        raise PermissionDenied
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
@@ -45,4 +55,4 @@ def post_edit(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'post_edit.html', {'form': form})
+    return render(request, 'post_edit.html', {'form': form, 'edit': edit})
