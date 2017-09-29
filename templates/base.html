@@ -9,10 +9,62 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+  <style type="text/css">
+    .card{
+      margin: 20px 0px;
+    }
+    .section-extras{
+      padding: 30px 0px;
+    }
+    .post-p{
+      font-weight: 400;
+    font-style: normal;
+    font-size: 21px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+    }
+    input{
+      min-height: 42px;
+      font-size: 17px;
+      line-height: 20px;
+      padding: 0 15px;
+      border: 2px solid #C9C9C9;
+      box-shadow: none !important;
+    }
+    input:focus {
+      border-color: #52BAD5;
+    }
+    .btn-custom{
+      width: 100%;
+      color: #FFF;
+      background-color: #52BAD5;
+      border: 2px solid #52BAD5;
+    }
+    .btn-custom:hover{
+      color: #FFF;
+      background-color: #52BAD5;
+      border: 2px solid #52BAD5;
+    }
+    .btn-custom:focus{
+      color: #FFF;
+      background-color: #52BAD5;
+      border: 2px solid #52BAD5;
+    }
+    .btn-custom:active{
+      color: #FFF;
+      background-color: #52BAD5;
+      border: 2px solid #52BAD5;
+    }
+  </style>
   {% block ext_styles %}
   {% endblock ext_styles %}
 </head>
 <body>
+
+  {% block navbar %}
+  {% include 'navbar.html' %}
+  {% endblock navbar %}
 
   {% block content %}
   {% endblock content %}

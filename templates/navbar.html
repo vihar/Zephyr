@@ -1,0 +1,38 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded nav-custom">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/">Zephyr</a>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+    <ul class="navbar-nav ">
+
+      {% if user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/blog/post/new">/create</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog">/blog</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/accounts/logout">/logout</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/blog">/blog</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/blog/post/new">/create</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/login">/signin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/signup">/signup</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">/about</a>
+      </li>
+       {% endif %}
+    </ul>
+  </div>
+</nav>
